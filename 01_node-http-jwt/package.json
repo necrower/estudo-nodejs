@@ -10,7 +10,7 @@
   "author": "necrower",
   "license": "ISC",
   "dependencies": {
-    "crypto-js": "^3.1.6",
+    "jsonwebtoken": "^7.0.1",
     "jwt-decode": "^2.0.1"
   }
 }
