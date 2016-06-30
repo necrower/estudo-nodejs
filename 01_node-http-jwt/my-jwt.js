@@ -1,10 +1,12 @@
 var CryptoJS = require("crypto-js");
+var jwt_decode = require('jwt-decode');
 
 
 module.exports = {
   base64url : base64url,
-  createUnsignedToken : createUnsignedToken,
-  createSignedToken : createSignedToken
+  createUnsigned : createUnsigned,
+  createSigned : createSigned,
+  decode: decode
 }
 
 
@@ -22,7 +24,7 @@ function base64url(source) {
   return encodedSource;
 }
 
- function createUnsignedToken(data) {
+ function createUnsigned(data) {
   var header = {
     "alg": "HS256",
     "typ": "JWT"
@@ -44,8 +46,8 @@ function base64url(source) {
   return token;
 }
 
-function createSignedToken(data, secret){
-  var token = createUnsignedToken(data);
+function createSigned(data, secret){
+  var token = createUnsigned(data);
 
   var signature = CryptoJS.HmacSHA256(token, secret);
   signature = base64url(signature);
@@ -53,6 +55,10 @@ function createSignedToken(data, secret){
   var signedToken = token + "." + signature;
   return signedToken;
 }
+
+function decode(token){
+    return jwt_decode(token);
+};
 
 /*
 Exemplo interessante para manter um contaxto

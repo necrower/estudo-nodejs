@@ -1,5 +1,5 @@
 var http = require('http');
-var helpers = require('./helpers');
+var jwt = require('./my-jwt');
 //var CryptoJS = require("crypto-js");
 
 //http://www.jonathan-petitcolas.com/2014/11/27/creating-json-web-token-in-javascript.html
@@ -41,7 +41,11 @@ function routeNotFound(response){
 
 //console.log(console.log(CryptoJS.HmacSHA1("Message", "Key")));
 //console.log(helpers.createUnsignedToken());
-console.log(helpers.createSignedToken({name: "necrower"}, secret));
+var tk = jwt.createSigned({name: "necrower"}, secret);
+//console.log(tk);
+
+console.log(jwt.decode(tk));
+
 
 
 server.listen(3000);
