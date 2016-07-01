@@ -1,0 +1,1 @@
+"C:\Program Files\MongoDB\Server\3.2\bin\mongoimport" --db test --collection users --drop --file user_list.json

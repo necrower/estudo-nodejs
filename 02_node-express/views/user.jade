@@ -1,0 +1,104 @@
+doctype html
+hamt(lang="en")
+    head
+        link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+        title Node is awesome!
+        style.
+            * {
+            font-family: Helvetica, Arial, sans-serif;
+            }
+            div.pic {
+            padding-left: 2em;
+            font-size: 1.2em;
+            float: left;
+            height: 400px;
+            }
+            div a {
+            padding-left: 0.5em;
+            }
+            div.nav {
+            float: left;
+            width: 100%;
+            height: 100px;
+            }
+            img {
+            padding-right: 2em;
+            }
+            input {
+            font-size: 1em;
+            }
+            dt {
+            font-weight: bolder;
+            display: inline-block;
+            width: 4em;
+            }
+            dd {
+            display: inline-block;
+            margin-left: 0;
+            line-height: 1.5;
+            }
+            .edit {
+            display: none;
+            }
+
+
+
+    body
+
+        div.nav
+            a(href='/') Back to the list
+
+        div.pic
+            img(src='/profilepics/'+user.username+'_med.jpg')
+            p
+                a(href='#', onclick='edit()' ) Edit
+                a(href='#', onclick='del()') Delete
+
+        h1
+            =user.name.full
+        dl
+            dt Street
+            dd.view
+                =address.street
+            dd.edit
+                input(type='text', id='street', value=address.street)
+            dt
+            dd.edit
+                input(type='submit', onclick='save()', value='Save', id='save')
+                input(type='submit', onclick='cancel()', value='Cancel', id='edit')
+
+
+
+    script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+    script.
+        function edit () {
+          $('.view').hide()
+          $('.edit').show()
+        }
+        function cancel (e) {
+          $('.view').show()
+          $('.edit').hide()
+        }
+        function save () {
+          $.ajax('/#{user.username}', {
+            method: 'PUT',
+            data: {
+              street: $('#street').val(),
+              city: $('#city').val(),
+              state: $('#state').val(),
+              zip: $('#zip').val()
+            },
+            complete: function () {
+              cancel()
+              location.reload()
+            }
+          })
+        }
+        function del () {
+          $.ajax('/#{user.username}', {
+            method: 'DELETE',
+            complete: function () {
+              location = '/'
+            }
+          })
+        }
