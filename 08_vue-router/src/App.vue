@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <header-bar></header-bar>
     <img class="logo" src="./assets/logo.png">
     <hello></hello>
     <p>
@@ -19,15 +20,23 @@
       <a href="https://github.com/vuejs/vue-router/" target="_blank">vue-router</a> for routing and
       <a href="https://github.com/vuejs/vuex/" target="_blank">vuex</a> for state management.
     </p>
+    <p>
+      <!-- use v-link directive for navigation. -->
+      <a v-link="{ path: '/foo' }">Go to Foo</a>
+      <a v-link="{ path: '/bar' }">Go to Bar</a>
+
+      <router-view></router-view>
+    </p>
   </div>
 </template>
 
 <script>
 import Hello from './components/Hello'
+import HeaderBar from './components/HeaderBar'
 
 export default {
   components: {
-    Hello
+    Hello, HeaderBar
   }
 }
 </script>
