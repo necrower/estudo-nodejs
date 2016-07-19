@@ -1,0 +1,23 @@
+﻿Eulina:
+    -Atas finais deve sinalizar evadidos.
+    -mostrar transferidos na ata
+    -possível duplicidade na ata quando aluno volta pra turma
+    -Buzios - forma de avalição com aprovação automática
+    -Reprovação "por conselho" para séries sem avaliação
+    -Mostrar motivo de reprovação (nota/falta)
+    -Ao executar o conselho de classe, atualizar o status do aluno
+Jovenal:
+    -Cidade nome errado na escola
+Lydia
+    -portador de necessidades especiais ocupa até 3 vagasS
+    -Lançar isenção de matéria para todos os alunos da turma
+    -Campo de observação editável na ficha individual
+    -Campo pré definido pelo município para observação da ficha
+Cilea
+    -Percentual de frequência na ata de resultados finais
+    -Sobrescrita do status de aprovação. Falta justificada.
+    -Verificar inclusão de dados históricos cilea
+Nicomedes
+    -*Ao transferir aluno de turma, montar as presenças do aluno com base nas aulas dadas para os outros alunos
+    em todos os períodos
+    -Alunos transferidos e matriculados depois na turma são tem suas presenças consolidadas atualizadas de acordo com a turma
